@@ -1,3 +1,4 @@
+import { IsNotEmpty } from "class-validator";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('customers')
@@ -6,6 +7,7 @@ export class Customer {
   id: string | number;
 
   @Column({ nullable: false })
+  @IsNotEmpty()
   name: string;
 
   @Column({
@@ -13,18 +15,20 @@ export class Customer {
     type: 'varchar',
     length: 50
   })
+  @IsNotEmpty()
   type: string;
 
   @Column({ nullable: false })
-  doc: number;
+  @IsNotEmpty()
+  doc: string;
 
   @Column({
-    nullable: false,
     type: 'timestamp',
     name: 'date',
     default: () => "CURRENT_TIMESTAMP(6)"
   })
-  date: Date;
+  @IsNotEmpty()
+  date?: Date;
 
   @Column({
     nullable: false,
@@ -34,5 +38,5 @@ export class Customer {
   is_active: boolean;
 
   @Column('simple-array')
-  tel: string[];
+  tel?: number[];
 }
