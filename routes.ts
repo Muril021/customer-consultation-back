@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { deleteCustomer, getAll, postCustomer, updateCustomer } from "./src/controllers/CustomerController";
+import CustomerController from "./src/controllers/CustomerController";
 
 const router = Router();
 
-router.get('/customers', getAll);
-router.post('/customers', postCustomer);
-router.put('/customers/:id', updateCustomer);
-router.delete('/customers/:id', deleteCustomer);
+router.get('/customers', CustomerController.getAll);
+router.post('/customers', CustomerController.postCustomer);
+router.put('/customers/:id', CustomerController.updateCustomer);
+router.delete('/customers/:id', CustomerController.deleteCustomer);
 
 export default router;
