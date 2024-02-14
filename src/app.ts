@@ -1,6 +1,6 @@
 import express from 'express'
 import { env } from '../env';
-import router from '../routes';
+import router from './routes';
 import { MyDataSource } from './data-source';
 
 const app = express();
