@@ -11,9 +11,8 @@ export class Customer {
   name: string;
 
   @Column({
-    nullable: false,
-    type: 'varchar',
-    length: 50
+    type: 'enum',
+    enum: ['Pessoa Física', 'Pessoa Jurídica']
   })
   @IsNotEmpty()
   type: string;
@@ -32,7 +31,7 @@ export class Customer {
 
   @Column({
     nullable: false,
-    default: false,
+    default: true,
     name: 'is_active'
   })
   is_active: boolean;
