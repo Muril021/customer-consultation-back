@@ -17,9 +17,9 @@ export class Customer {
   @IsNotEmpty()
   type: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, type: 'bigint' })
   @IsNotEmpty()
-  doc: string;
+  doc: number;
 
   @Column({
     type: 'timestamp',
@@ -36,6 +36,6 @@ export class Customer {
   })
   is_active: boolean;
 
-  @Column('simple-array')
+  @Column('simple-array', { nullable: true })
   tel?: number[];
 }

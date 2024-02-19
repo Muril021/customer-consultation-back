@@ -18,12 +18,17 @@ const type = check('type').custom(value => {
 
 const doc = check('doc').custom((value, { req }) => {
   const selected = req.body.type;
+  const numberValue = String(value).length;
 
-  if (selected === 'Pessoa Física' && value.length !== 11) {
+  if (typeof value !== 'number') {
+    throw new Error('The field doc must be a number.');
+  }
+
+  if (selected === 'Pessoa Física' && numberValue !== 11) {
     throw new Error('The field doc must have 11 characters.');
   }
 
-  if (selected === 'Pessoa Jurídica' && value.length !== 14) {
+  if (selected === 'Pessoa Jurídica' && numberValue !== 14) {
     throw new Error('The field doc must have 14 characters.');
   }
 
@@ -31,10 +36,12 @@ const doc = check('doc').custom((value, { req }) => {
 })
 
 const tel = check('tel').custom(value => {
-  const number = String(value).length;
+  if (value) {
+    const number = String(value).length;
 
-  if (number !== 10 && number !== 11) {
-    throw new Error('The field tel must have between 10 and 11 characters.');
+    if (number !== 10 && number !== 11) {
+      throw new Error('The field tel must have between 10 and 11 characters.');
+    }
   }
 
   return true;
