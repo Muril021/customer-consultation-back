@@ -17,9 +17,9 @@ export class Customer {
   @IsNotEmpty()
   type: string;
 
-  @Column({ nullable: false, type: 'bigint' })
+  @Column({ nullable: false, type: 'varchar' })
   @IsNotEmpty()
-  doc: number;
+  doc: string;
 
   @Column({
     type: 'timestamp',

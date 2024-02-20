@@ -18,17 +18,17 @@ const type = check('type').custom(value => {
 
 const doc = check('doc').custom((value, { req }) => {
   const selected = req.body.type;
-  const numberValue = String(value).length;
+  const patt = /^\d+$/;
 
-  if (typeof value !== 'number') {
-    throw new Error('The field doc must be a number.');
+  if (!patt.test(value)) {
+    throw new Error('The field doc must only have numbers.');
   }
 
-  if (selected === 'Pessoa Física' && numberValue !== 11) {
+  if (selected === 'Pessoa Física' && value.length !== 11) {
     throw new Error('The field doc must have 11 characters.');
   }
 
-  if (selected === 'Pessoa Jurídica' && numberValue !== 14) {
+  if (selected === 'Pessoa Jurídica' && value.length !== 14) {
     throw new Error('The field doc must have 14 characters.');
   }
 
