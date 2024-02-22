@@ -1,9 +1,19 @@
-import express from 'express'
+import express from 'express';
+import cors from 'cors';
 import { env } from '../env';
 import router from './routes';
 import { MyDataSource } from './data-source';
 
 const app = express();
+
+const allowedOrigins = ['http://localhost:5173'];
+
+const options: cors.CorsOptions = {
+  origin: allowedOrigins
+};
+
+app.use(cors(options));
+
 app.use(express.json());
 
 MyDataSource.initialize()
