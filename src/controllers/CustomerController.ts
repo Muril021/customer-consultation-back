@@ -12,6 +12,16 @@ class CustomerController {
       return res.status(500).json(error);
     }
   }
+
+  async getById(req: Request, res: Response) {
+    try {
+      const customer = await CustomerService.findById(req.params.id);
+
+      return res.status(200).json(customer);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  }
   
   async postCustomer(req: Request, res: Response) {
     try {

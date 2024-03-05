@@ -17,6 +17,15 @@ class CustomerRepository<Entity> {
     return customers;
   }
 
+  async findById(id: string | number) {
+    const customer = await MyDataSource
+    .createQueryBuilder(Customer, 'customers')
+    .where('id = :id', { id })
+    .getOne();
+
+    return customer;
+  }
+
   async create(data: Customer) {
     const newCustomer = await MyDataSource
     .createQueryBuilder()

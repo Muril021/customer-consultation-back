@@ -5,6 +5,7 @@ import CustomerVaildation from './validations/CustomerValidation';
 const router = Router();
 
 router.get('/customers', CustomerController.getAll);
+router.get('/customers/:id', CustomerController.getById);
 router.post('/customers', CustomerVaildation.validator, CustomerController.postCustomer);
 router.put('/customers/:id', CustomerVaildation.validator, CustomerController.updateCustomer);
 router.delete('/customers/:id', CustomerController.deleteCustomer);
