@@ -5,6 +5,10 @@ class CustomerService {
   findAllCustomers() {
     return CustomerRepository.findAll();
   }
+
+  findById(id: string | number) {
+    return CustomerRepository.findById(id);
+  }
   
   createCustomer(data: Customer) {
     return CustomerRepository.create(data);
