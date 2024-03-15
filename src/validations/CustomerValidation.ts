@@ -35,18 +35,18 @@ const doc = check('doc').custom((value, { req }) => {
   return true;
 })
 
-const tel = check('tel').custom(value => {
+const phones = check('phones').custom(value => {
   if (value) {
     const number = String(value).length;
 
     if (number !== 10 && number !== 11) {
-      throw new Error('The field tel must have between 10 and 11 characters.');
+      throw new Error('The field phones must have between 10 and 11 characters.');
     }
   }
 
   return true;
 })
 
-const validator = [ name, type, doc, tel ];
+const validator = [ name, type, doc, phones ];
 
 export default { validator };
