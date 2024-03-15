@@ -37,5 +37,5 @@ export class Customer {
   is_active: boolean;
 
   @Column('simple-array', { nullable: true })
-  phones?: number[];
+  phones?: string[];
 }

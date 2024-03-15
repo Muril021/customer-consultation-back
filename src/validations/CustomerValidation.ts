@@ -36,12 +36,14 @@ const doc = check('doc').custom((value, { req }) => {
 })
 
 const phones = check('phones').custom(value => {
-  if (value) {
-    const number = String(value).length;
+  const patt = /^\d+$/
 
-    if (number !== 10 && number !== 11) {
-      throw new Error('The field phones must have between 10 and 11 characters.');
-    }
+  if (!patt.test(value)) {
+    throw new Error('The field phones must only have numbers.');
+  }
+
+  if (value.length !== 10 && value.length !== 11) {
+    throw new Error('The field phones must have between 10 and 11 characters.');
   }
 
   return true;
